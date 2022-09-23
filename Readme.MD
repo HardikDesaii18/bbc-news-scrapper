@@ -1,16 +1,14 @@
 BBC News Scrapper
 
-###Git Code LINK- 
-
 ### Web Site - http://54.218.12.212:8501/
 
-##Infrastructure
+## Infrastructure
 
 - Following AWS services are used for the implementation
   - EC2 - Hosting the scraping code and streamlit application
   - DynamoDB - For storing the NoSQL data of the articles
 
-##Implementation
+## Implementation
 
 The Application works in 2 parts
 
@@ -30,4 +28,10 @@ Working
 - AWS Role is assigned to the EC2 mahcine in order to interact with the System
 - SSH into the EC2 machine is whitelisted only to Developers IP
 - HTTP and HTTPs traffic is only allowed on the port 8501 
+
+## Scope of Improvement
+
+- Sort the Articles by date descending
+- Add photos of the article
+
 

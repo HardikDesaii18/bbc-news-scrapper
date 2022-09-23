@@ -22,7 +22,7 @@ def main():
     st.sidebar.title("Navigation")
     # st.sidebar.markdown("Go to:")
 
-    cateory = st.sidebar.selectbox("Main Category:", ('', 'SPORTS', 'FINANCE'))
+    cateory = st.sidebar.selectbox("Main Category:", ('', 'SPORTS', 'NEWS'))
 
     response = news_data_table.scan()
     result = response['Items']
@@ -62,14 +62,28 @@ def main():
                 if 'sport_golf' in object['id']:
                     filter_result.append(object)
 
-    if cateory == "FINANCE":
-        sub_category = st.sidebar.radio("Sub Category :", ('MARKET', 'POLITICS',))
+    if cateory == "NEWS":
+        sub_category = st.sidebar.radio("Sub Category :", ('WORLD', 'BUSINESS', 'UK', 'CORONA VIRUS'))
 
-        if sub_category == "MARKET":
-            print("MARKET")
+        if sub_category == "WORLD":
+            for object in result:
+                if 'news_world' in object['id']:
+                    filter_result.append(object)
 
-        if sub_category == "POLITICS":
-            print("POLITICS")
+        if sub_category == "BUSINESS":
+            for object in result:
+                if 'news_business' in object['id']:
+                    filter_result.append(object)
+
+        if sub_category == "UK":
+            for object in result:
+                if 'news_uk' in object['id']:
+                    filter_result.append(object)
+
+        if sub_category == "CORONA VIRUS":
+            for object in result:
+                if 'news_coronavirus' in object['id']:
+                    filter_result.append(object)
 
     with st.container():
         for object in filter_result:
