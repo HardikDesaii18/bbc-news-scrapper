@@ -31,7 +31,9 @@ Working
 
 ## Scope of Improvement
 
-- Sort the Articles by date descending
 - Add photos of the article
+- Scrap all the categories
+- Add hashtags for retrieval 
+
 
 

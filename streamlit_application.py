@@ -83,13 +83,30 @@ def main():
                 if 'news_coronavirus' in object['id']:
                     filter_result.append(object)
 
+    # sort the articles before showing
+    ordered_dict = dict()
+
+    for object in filter_result:
+        date_int = int("".join(object['date'].split("-")))
+
+        if date_int not in ordered_dict.keys():
+            ordered_dict[date_int] = list()
+
+        ordered_dict[date_int].append(object)
+
+    # sort the keys
+    ordered_keys = sorted(ordered_dict.keys(), reverse=True)
+
     with st.container():
-        for object in filter_result:
-            with st.expander(object['title']):
-                st.write("Date - {}".format(object['date']))
-                st.write("Category - {}".format(str(object['category'])).upper())
-                st.write("Sub Category - {}".format(str(object['subcategory'])).upper())
-                st.write(object['content'])
+        for date_key in ordered_keys:
+            filter_result = ordered_dict[date_key]
+
+            for object in filter_result:
+                with st.expander(object['title']):
+                    st.write("Date - {}".format(object['date']))
+                    st.write("Category - {}".format(str(object['category'])).upper())
+                    st.write("Sub Category - {}".format(str(object['subcategory'])).upper())
+                    st.write(object['content'])
 
 
 st.set_page_config(
